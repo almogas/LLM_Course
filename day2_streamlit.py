@@ -16,12 +16,18 @@ st.title("my gen AI app")
 temp = 1
 logger.info(f"{temp=}")
 
+with st.slider("Temperature", 0.0, 1.0, 0.5):
+    temp = st.session_state.slider_value
+    logger.info(f"{temp=}")
+    st.write(f"Temperature: {temp}")
+
+
 with st.form("sample_app"):
     txt = st.text_area("Enter text:", "what GPT stands for?")
     sub = st.form_submit_button("submit")
     if sub:
         llm1 =ChatOpenAI(model='gpt-4.1-mini', temperature=0.1, openai_api_key=os.environ["openai_api_key"])
         logger.info("invoking")
-        ans = llm1.invoke(txt)
+        ans = llm1.invoke(txt, temperature=temp)
         st.info(ans.content)
         logger.info("Done")
