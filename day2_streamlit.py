@@ -19,6 +19,8 @@ logger.info(f"{temp=}")
 with st.slider("Temperature", 0.0, 1.0, 0.5):
     temp = st.session_state.slider_value
     logger.info(f"{temp=}")
+    st.write(f"Temperature: {temp}")
+
 
 with st.form("sample_app"):
     txt = st.text_area("Enter text:", "what GPT stands for?")
