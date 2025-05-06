@@ -1,0 +1,9 @@
+streamlit
+langchain
+openai
+langchain_community
+langchain_huggingface
+langchain_experimental
+pdfplumber
+faiss-cpu
+langchain_openai
