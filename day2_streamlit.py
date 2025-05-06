@@ -16,7 +16,7 @@ st.title("my gen AI app")
 temp = 1
 logger.info(f"{temp=}")
 
-with st.slider("Temperature", 0.0, 1.0, 0.5):
+with st.slider("Temperature", 0, 10, 5):
     temp = st.session_state.slider_value
     logger.info(f"{temp=}")
     st.write(f"Temperature: {temp}")
@@ -28,6 +28,6 @@ with st.form("sample_app"):
     if sub:
         llm1 =ChatOpenAI(model='gpt-4.1-mini', temperature=0.1, openai_api_key=os.environ["openai_api_key"])
         logger.info("invoking")
-        ans = llm1.invoke(txt, temperature=temp)
+        ans = llm1.invoke(txt, temperature=temp/10.0)
         st.info(ans.content)
         logger.info("Done")
