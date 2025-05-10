@@ -24,7 +24,7 @@ st.write(f"Temperature: {temp}")
 
 with st.form("sample_app"):
     txt = st.text_area("Enter text:", "what GPT stands for?")
-    sub = st.form_submit_button("submit")
+    sub = st.form_submit_button("Ask GPT")
     if sub:
         llm1 =ChatOpenAI(model='gpt-4.1-mini', temperature=0.1, openai_api_key=os.environ["openai_api_key"])
         logger.info("invoking")
